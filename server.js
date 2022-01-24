@@ -26,7 +26,7 @@ smartsheet.sheets.getRow(options)
     console.log(error);
   });
 // Get sheet
-app.use('/columns', columns);
+
     
    
 });
