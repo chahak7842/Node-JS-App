@@ -1,1 +1,1 @@
-web: node columnsNew.js
+web: node server.js

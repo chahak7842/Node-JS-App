@@ -1,5 +1,6 @@
 const express = require('express');
 router = express.Router();
+columns = require('./routes/columns');
 const app = express();
 var client = require('smartsheet');
 const { Pool,Client } = require('pg');
@@ -25,7 +26,7 @@ smartsheet.sheets.getRow(options)
     console.log(error);
   });
 // Get sheet
-
+app.use('/columns', columns);
     
    
 });
