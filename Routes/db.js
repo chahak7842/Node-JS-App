@@ -21,30 +21,10 @@ const config = {
   ssl: { rejectUnauthorized: false }                 //Default port, change it if needed
 };
 var pool = new pg.Pool(config)
-var arr2 = [];
+
 function updatePostgress(eventVal,optionsVal) {
-  console.log(`event in db:`, JSON.stringify(eventVal));
- var arr1 = new Array();
-  
-  const response = await smarClient.sheets.getSheet(optionsVal);
-   const row = response.rows[0];
-  const cell = row.cells[0];
-  const column = response.columns.find(c => c.id === cell.columnId);
-  console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
-  /*if (eventVal.eventType === "created"){
-    if (column.title === "Status"){
-      arr1[1]=cell.displayValue;
-    } 
-    if (column.title === "CaseNumber"){
-      arr1[0]=cell.displayValue;
-    } 
-  } 
-  if (eventVal.eventType === "updated"){
-    
-  } 
-  console.log(`arr1 in db:`, arr1);
-  console.log(`arr2 in db:`, arr2);
-  arr2.push(arr1);*/
+ 
+
 }
 //app.set('port', process.env.PORT || 8080);
 app.get('/', function(req, res) {

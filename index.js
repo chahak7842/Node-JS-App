@@ -130,6 +130,7 @@ app.post("/", async (req, res) => {
 * Your implementation might make updates or send data to another system.
 * Beware of infinite loops if you make modifications to the same sheet
 */
+var arr2 = [];
 async function processEvents(callbackData) {
     if (callbackData.scope !== "sheet") {
         return;
@@ -146,10 +147,9 @@ async function processEvents(callbackData) {
         if(event.objectType === "row"){
             rowid =  event.id;   
         }
-        console.log(`rowid in Index:`, rowid);
         if (event.objectType === "cell" && event.rowId === rowid) {
             console.log(`Cell changed, row id: ${event.rowId}, column id ${event.columnId}`);
-            dbRoute.updatePostgress(event);
+            var arr1 = new Array();
             // Since event data is "thin", we need to read from the sheet to get updated values.
             const options = {
                 id: callbackData.scopeObjectId,             // Get sheet id from callback
@@ -159,7 +159,25 @@ async function processEvents(callbackData) {
                 }
             };
             dbRoute.updatePostgress(event,options);
-           
+            const response = await smarClient.sheets.getSheet(options);
+            const row = response.rows[0];
+            const cell = row.cells[0];
+            const column = response.columns.find(c => c.id === cell.columnId);
+            console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
+            if (eventVal.eventType === "created"){
+                if (column.title === "Status"){
+                  arr1[1]=cell.displayValue;
+                } 
+                if (column.title === "CaseNumber"){
+                  arr1[0]=cell.displayValue;
+                } 
+              } 
+              if (eventVal.eventType === "updated"){
+                
+              } 
+              console.log(`arr1 in db:`, arr1);
+              console.log(`arr2 in db:`, arr2);
+              arr2.push(arr1);
         }
        
     }
