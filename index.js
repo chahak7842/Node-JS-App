@@ -141,7 +141,11 @@ async function processEvents(callbackData) {
         // This sample only considers cell changes
         if (event.objectType === "cell") {
             console.log(`Cell changed, row id: ${event.rowId}, column id ${event.columnId}`);
+<<<<<<< HEAD
             
+=======
+             console.log(`event :`, JSON.stringify(event));
+>>>>>>> b297845b050f78c1edf554d4e03bd17d497cf0dc
             // Since event data is "thin", we need to read from the sheet to get updated values.
             const options = {
                 id: callbackData.scopeObjectId,             // Get sheet id from callback
