@@ -88,5 +88,24 @@ app.get('/', function(req, res) {
       );
   });
 });
+(async () => {
+  try {
+      // TODO: Edit config.json to set desired sheet id and API token
+      const config = require("./config.json");
+
+      initializeSmartsheetClient(config.smartsheetAccessToken, config.logLevel);
+
+      // Sanity check: make sure we can access the sheet
+      await probeSheet(config.sheetId);
+     
+      const PORT = process.env.PORT || 3000;
+      app.listen(PORT, () =>
+          console.log("Node-webhook-sample app listening on port 3000"));
+
+      await initializeHook(config.sheetId, config.webhookName, config.callbackUrl);
+  } catch (err) {
+      console.error(err);
+  }
+})();
 module.exports = app
 module.exports = { updatePostgress };
