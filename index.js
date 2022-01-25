@@ -164,6 +164,7 @@ async function processEvents(callbackData) {
             const row = response.rows[0];
             console.log('**** New row value ',JSON.stringify(row));
             const cell = row.cells[0];
+            console.log('**** New row.cells value ',JSON.stringify(row.cells));
             const column = response.columns.find(c => c.id === cell.columnId);
            // const column1 = response.columns.find(c => c.title === "CaseNumber");
            // const column2 = response.columns.find(c => c.title === "Status");
