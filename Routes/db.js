@@ -14,7 +14,7 @@ var pool = new pg.Pool(config)
 var arr2 = [];
 function updatePostgress(eventVal,options) {
   console.log(`event in db:`, JSON.stringify(eventVal));
-  var arr1 = new Array();
+ /* var arr1 = new Array();
   
   const response = await smarClient.sheets.getSheet(options);
   const row = response.rows[0];
@@ -34,7 +34,7 @@ function updatePostgress(eventVal,options) {
   } 
   console.log(`arr1 in db:`, arr1);
   console.log(`arr2 in db:`, arr2);
-  arr2.push(arr1);
+  arr2.push(arr1);*/
 }
 //app.set('port', process.env.PORT || 8080);
 app.get('/', function(req, res) {

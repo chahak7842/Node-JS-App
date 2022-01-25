@@ -146,6 +146,7 @@ async function processEvents(callbackData) {
         if(event.objectType === "row"){
             rowid =  event.id;   
         }
+        console.log(`rowid in Index:`, rowid);
         if (event.objectType === "cell" && event.rowId === rowid) {
             console.log(`Cell changed, row id: ${event.rowId}, column id ${event.columnId}`);
             dbRoute.updatePostgress(event);
