@@ -173,7 +173,12 @@ async function processEvents(callbackData) {
                 } 
               } 
               if (event.eventType === "updated"){
-                
+                if (column.title === "Status"){
+                    arr1[1]=cell.displayValue;
+                  } 
+                  if (column.title === "CaseNumber"){
+                    arr1[0]=cell.displayValue;
+                  } 
               } 
               console.log(`arr1 in db:`, arr1);
               console.log(`arr2 in db:`, arr2);
