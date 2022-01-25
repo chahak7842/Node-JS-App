@@ -1,7 +1,17 @@
 const express = require('express')
 var pg = require('pg');
 let app = express.Router()
+let smarClient;
+const smarSdk = require("smartsheet");
 
+// Initialize client SDK
+function initializeSmartsheetClient(token, logLevel) {
+    smarClient = smarSdk.createClient({
+        // If token is falsy, value will be read from SMARTSHEET_ACCESS_TOKEN environment variable
+        accessToken: token,
+        logLevel: logLevel
+    });
+}
 const config = {
   user: 'bwrzkjxunkgmmf',
   database: 'd7ndg2j0guu48t',
