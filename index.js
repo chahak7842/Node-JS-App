@@ -162,7 +162,7 @@ async function processEvents(callbackData) {
             
             const response = await smarClient.sheets.getSheet(options);
             const row = response.rows[0];
-            console.log(`**** New row value "${row}`);
+            console.log('**** New row value ',JSON.stringify(row));
             const cell = row.cells[0];
             const column = response.columns.find(c => c.id === cell.columnId);
            // const column1 = response.columns.find(c => c.title === "CaseNumber");
