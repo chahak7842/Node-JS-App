@@ -162,8 +162,11 @@ async function processEvents(callbackData) {
             
             const response = await smarClient.sheets.getSheet(options);
             const row = response.rows[0];
+            console.log(`**** New row value "${row}`);
             const cell = row.cells[0];
             const column = response.columns.find(c => c.id === cell.columnId);
+           // const column1 = response.columns.find(c => c.title === "CaseNumber");
+           // const column2 = response.columns.find(c => c.title === "Status");
             console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
             if (event.eventType === "created"){
                 if (column.title === "Status"){
