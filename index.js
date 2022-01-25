@@ -159,7 +159,7 @@ async function processEvents(callbackData) {
                     columnIds: event.columnId.toString()    // Just read one column
                 }
             };
-            dbRoute.updatePostgress(event,options);
+            
             const response = await smarClient.sheets.getSheet(options);
             const row = response.rows[0];
             const cell = row.cells[0];
@@ -181,13 +181,12 @@ async function processEvents(callbackData) {
                     arr1[0]=cell.displayValue;
                   } 
               } 
-              console.log(`arr1 in db:`, arr1);
+              console.log(`arr1 in index:`, arr1);
              
         }
-       
+        dbRoute.updatePostgress(event,arr1);
     }
-    console.log(`arr2 in db:`, arr2);
-    arr2.push(arr1);
+    
 }
 
 // main

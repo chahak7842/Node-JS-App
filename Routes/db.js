@@ -22,14 +22,14 @@ const config = {
 };
 var pool = new pg.Pool(config)
 
-function updatePostgress(eventVal,optionsVal) {
+function updatePostgress(eventVal,arr1) {
  
 
 }
 //app.set('port', process.env.PORT || 8080);
 app.get('/', function(req, res) {
   
-  console.log('It is working');
+  console.log(`arr1 in db:`, arr1);
   pool.connect(function (err, conn, done) {
       // watch for any connect issues
       if (err) console.log(err);
