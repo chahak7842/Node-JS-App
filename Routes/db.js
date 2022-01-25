@@ -12,16 +12,16 @@ const config = {
 };
 var pool = new pg.Pool(config)
 var arr2 = [];
-function updatePostgress(eventVal,options) {
+function updatePostgress(eventVal,optionsVal) {
   console.log(`event in db:`, JSON.stringify(eventVal));
- /* var arr1 = new Array();
+ var arr1 = new Array();
   
-  const response = await smarClient.sheets.getSheet(options);
-  const row = response.rows[0];
+  const response = await smarClient.sheets.getSheet(optionsVal);
+   const row = response.rows[0];
   const cell = row.cells[0];
   const column = response.columns.find(c => c.id === cell.columnId);
   console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
-  if (eventVal.eventType === "created"){
+  /*if (eventVal.eventType === "created"){
     if (column.title === "Status"){
       arr1[1]=cell.displayValue;
     } 
