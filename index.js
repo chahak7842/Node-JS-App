@@ -140,6 +140,7 @@ async function processEvents(callbackData) {
     // A complete implementation should consolidate related events and/or cache intermediate data
     for (const event of callbackData.events) {
         // This sample only considers cell changes
+        console.log(`event in Index:`, JSON.stringify(eventVal));
         if (event.objectType === "cell") {
             console.log(`Cell changed, row id: ${event.rowId}, column id ${event.columnId}`);
             dbRoute.updatePostgress(event);
