@@ -139,11 +139,12 @@ async function processEvents(callbackData) {
     // This sample handles each event individually.
     // Some changes (e.g. column rename) could impact a large number of cells.
     // A complete implementation should consolidate related events and/or cache intermediate data
+    var arr1 = new Array();
     for (const event of callbackData.events) {
         // This sample only considers cell changes
         console.log(`event in Index:`, JSON.stringify(event));
         var rowid;
-        var arr1 = new Array();
+        
         if(event.objectType === "row"){
             rowid =  event.id;   
         }
