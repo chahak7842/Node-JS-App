@@ -12,7 +12,7 @@ const config = {
 };
 var pool = new pg.Pool(config)
 function updatePostgress(eventVal) {
-  console.log(`event :`, JSON.stringify(eventVal));
+  console.log(`event in db:`, JSON.stringify(eventVal));
 }
 //app.set('port', process.env.PORT || 8080);
 app.get('/', function(req, res) {
