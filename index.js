@@ -182,11 +182,12 @@ async function processEvents(callbackData) {
                   } 
               } 
               console.log(`arr1 in db:`, arr1);
-              console.log(`arr2 in db:`, arr2);
-              arr2.push(arr1);
+             
         }
        
     }
+    console.log(`arr2 in db:`, arr2);
+    arr2.push(arr1);
 }
 
 // main
