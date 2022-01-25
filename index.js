@@ -141,7 +141,12 @@ async function processEvents(callbackData) {
     for (const event of callbackData.events) {
         // This sample only considers cell changes
         console.log(`event in Index:`, JSON.stringify(event));
-        if (event.objectType === "cell") {
+        var rowid;
+       
+        if(event.objectType === "row"){
+            rowid =  event.id;   
+        }
+        if (event.objectType === "cell" && event.rowId === rowid) {
             console.log(`Cell changed, row id: ${event.rowId}, column id ${event.columnId}`);
             dbRoute.updatePostgress(event);
             // Since event data is "thin", we need to read from the sheet to get updated values.
@@ -152,12 +157,10 @@ async function processEvents(callbackData) {
                     columnIds: event.columnId.toString()    // Just read one column
                 }
             };
-            const response = await smarClient.sheets.getSheet(options);
-            const row = response.rows[0];
-            const cell = row.cells[0];
-            const column = response.columns.find(c => c.id === cell.columnId);
-            console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
+            dbRoute.updatePostgress(event,options);
+           
         }
+       
     }
 }
 
