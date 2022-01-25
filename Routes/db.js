@@ -13,6 +13,33 @@ const config = {
 var pool = new pg.Pool(config)
 function updatePostgress(eventVal) {
   console.log(`event in db:`, JSON.stringify(eventVal));
+  if (eventVal.eventType === "created"){
+    'INSERT INTO student ("CaseNumber", "Status") VALUES ($1,$2);', ['This is a test case', 'Open'],
+          function(err, result) {
+            console.log('Insertion result',result.rows.sfid)
+              //res.json(result.rows);
+              if (err != null || result.rowCount != 0) {
+                conn.query('SELECT * FROM salesforce.case',
+                function(err, result) {
+                  done();
+                  if (err) {
+
+                      res.status(400).json({error: err.message});
+                  }
+                  else {
+                      // this will still cause jquery to display 'Record updated!'
+                      // eventhough it was inserted
+                      //res.json(result.rows);
+                      console.log('select result',result.rows)
+                      //res.send(result);
+                  }
+                });
+              }
+              else {
+                  done();
+                  res.json(result);
+              }
+  } 
 }
 //app.set('port', process.env.PORT || 8080);
 app.get('/', function(req, res) {
