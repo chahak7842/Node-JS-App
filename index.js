@@ -164,7 +164,7 @@ async function processEvents(callbackData) {
             const cell = row.cells[0];
             const column = response.columns.find(c => c.id === cell.columnId);
             console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
-            if (eventVal.eventType === "created"){
+            if (event.eventType === "created"){
                 if (column.title === "Status"){
                   arr1[1]=cell.displayValue;
                 } 
@@ -172,7 +172,7 @@ async function processEvents(callbackData) {
                   arr1[0]=cell.displayValue;
                 } 
               } 
-              if (eventVal.eventType === "updated"){
+              if (event.eventType === "updated"){
                 
               } 
               console.log(`arr1 in db:`, arr1);
