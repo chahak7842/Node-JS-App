@@ -157,7 +157,7 @@ async function processEvents(callbackData) {
             const options = {
                 id: callbackData.scopeObjectId,             // Get sheet id from callback
                 queryParameters: {
-                    rowIds: event.rowId.toString()    // Just read one column
+                    rowIds: event.id.toString()    // Just read one column
                 }
             };
           //  ,         // Just read one row
