@@ -186,6 +186,7 @@ async function processEvents(callbackData) {
                 //  } 
              // } 
               console.log(`arr1 in index:`, arr1);
+              console.log(`event.eventType`, event.eventType);
               if (event.eventType === "created"){
                 dbRoute.updatePostgress(arr1);
               } 
