@@ -177,12 +177,12 @@ async function processEvents(callbackData) {
            console.log('**** cell1.displayValue ',cell1.displayValue);
             console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
             if (event.eventType === "created"){
-                if (column.title === "Status"){
+                //if (column.title === "Status"){
                   arr1[1]=cell.displayValue;
-                } 
-                if (column.title === "CaseNumber"){
+                //} 
+                //if (column.title === "CaseNumber"){
                   arr1[0]=cell1.displayValue;
-                } 
+                //} 
               } 
               if (event.eventType === "updated"){
                 //if (column.title === "Status"){
