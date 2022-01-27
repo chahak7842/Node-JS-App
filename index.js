@@ -164,7 +164,7 @@ async function processEvents(callbackData) {
             const row = response.rows[0];
             console.log('**** New row value ',JSON.stringify(row));
             const cell = row.cells[2];
-            const cell1 = row.cells[4];
+            const cell1 = row.cells[5];
             console.log('**** New row.cells value ',JSON.stringify(row.cells));
             const column = response.columns.find(c => c.id === cell.columnId);
            const column1 = response.columns.find(c => c.id === cell1.columnId);
@@ -177,7 +177,7 @@ async function processEvents(callbackData) {
                   arr1[1]=cell.displayValue;
                 } 
                 if (column.title === "CaseNumber"){
-                  arr1[0]=cell.displayValue;
+                  arr1[0]=cell1.displayValue;
                 } 
               } 
               if (event.eventType === "updated"){
@@ -185,7 +185,7 @@ async function processEvents(callbackData) {
                     arr1[1]=cell.displayValue;
                   } 
                   if (column.title === "CaseNumber"){
-                    arr1[0]=cell.displayValue;
+                    arr1[0]=cell1.displayValue;
                   } 
               } 
               console.log(`arr1 in index:`, arr1);
