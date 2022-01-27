@@ -173,6 +173,8 @@ async function processEvents(callbackData) {
            // const column2 = response.columns.find(c => c.title === "Status");
            console.log('**** column',column);
            console.log('**** column1 ',column1);
+           console.log('**** cell.displayValue ',cell.displayValue);
+           console.log('**** cell1.displayValue ',cell1.displayValue);
             console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
             if (event.eventType === "created"){
                 if (column.title === "Status"){
@@ -183,12 +185,12 @@ async function processEvents(callbackData) {
                 } 
               } 
               if (event.eventType === "updated"){
-                if (column.title === "Status"){
+                //if (column.title === "Status"){
                     arr1[1]=cell.displayValue;
-                  } 
-                  if (column.title === "CaseNumber"){
+                //  } 
+                //  if (column.title === "CaseNumber"){
                     arr1[0]=cell1.displayValue;
-                  } 
+                //  } 
               } 
               console.log(`arr1 in index:`, arr1);
              
