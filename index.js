@@ -155,11 +155,11 @@ async function processEvents(callbackData) {
             const options = {
                 id: callbackData.scopeObjectId,             // Get sheet id from callback
                 queryParameters: {
-                    rowIds: event.rowId.toString(),         // Just read one row
-                    columnIds: event.columnId.toString()    // Just read one column
+                    rowIds: event.rowId.toString()    // Just read one column
                 }
             };
-            
+          //  ,         // Just read one row
+           //         columnIds: event.columnId.toString()
             const response = await smarClient.sheets.getSheet(options);
             const row = response.rows[0];
             console.log('**** New row value ',JSON.stringify(row));
