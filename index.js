@@ -163,13 +163,14 @@ async function processEvents(callbackData) {
             const response = await smarClient.sheets.getSheet(options);
             const row = response.rows[0];
             console.log('**** New row value ',JSON.stringify(row));
-            const cell = row.cells[0];
+            const cell = row.cells[2];
+            const cell1 = row.cells[4];
             console.log('**** New row.cells value ',JSON.stringify(row.cells));
-            const column = response.columns.find(c => c.id === '421000981571460'); //status
-            const column1 = response.columns.find(c => c.id === "3832019985688452");  //CaseNumber
-            //const column2 = response.columns.find(c => c.title === "Status");
-            console.log('**** column ',column);
-            console.log('**** column1 ',column1);
+            const column = response.columns.find(c => c.id === cell.columnId);
+           const column1 = response.columns.find(c => c.id === cell1.columnId);
+           // const column2 = response.columns.find(c => c.title === "Status");
+           console.log('**** column',column);
+           console.log('**** column1 ',column1);
             console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
             if (event.eventType === "created"){
                 if (column.title === "Status"){
