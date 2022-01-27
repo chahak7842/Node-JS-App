@@ -176,26 +176,22 @@ async function processEvents(callbackData) {
            console.log('**** cell.displayValue ',cell.displayValue);
            console.log('**** cell1.displayValue ',cell1.displayValue);
             console.log(`**** New cell value "${cell.displayValue}" in column "${column.title}", row number ${row.rowNumber}`);
-            if (event.eventType === "created"){
-                //if (column.title === "Status"){
-                  arr1[1]=cell.displayValue;
-                //} 
-                //if (column.title === "CaseNumber"){
-                  arr1[0]=cell1.displayValue;
-                //} 
-              } 
-              if (event.eventType === "updated"){
+            
+              //if (event.eventType === "updated"){
                 //if (column.title === "Status"){
                     arr1[1]=cell.displayValue;
                 //  } 
                 //  if (column.title === "CaseNumber"){
                     arr1[0]=cell1.displayValue;
                 //  } 
-              } 
+             // } 
               console.log(`arr1 in index:`, arr1);
+              if (event.eventType === "created"){
+                dbRoute.updatePostgress(arr1);
+              } 
              
         }
-        dbRoute.updatePostgress(event,arr1);
+        
     }
     
 }
