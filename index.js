@@ -140,6 +140,7 @@ async function processEvents(callbackData) {
     // Some changes (e.g. column rename) could impact a large number of cells.
     // A complete implementation should consolidate related events and/or cache intermediate data
     var arr1 = new Array();
+    console.log('callbackData.events', JSON.stringify(callbackData.events));
     for (const event of callbackData.events) {
         // This sample only considers cell changes
         console.log(`event in Index:`, JSON.stringify(event));
