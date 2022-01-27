@@ -148,7 +148,7 @@ async function processEvents(callbackData) {
         if(event.objectType === "row"){
             rowid =  event.id;   
         }
-        if (event.objectType === "cell" && event.rowId === rowid) {
+        if (event.objectType === "row" && event.rowId === rowid) {
             console.log(`Cell changed, row id: ${event.rowId}, column id ${event.columnId}`);
            
             // Since event data is "thin", we need to read from the sheet to get updated values.
